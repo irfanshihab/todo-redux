@@ -1,13 +1,11 @@
-
-
 import "./App.css";
-
+import Todo from "./pages/Todo";
 
 function App() {
   return (
     <>
       <div>
-        {/* <Todo></Todo> */}
+        <Todo></Todo>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 // import TodoContainer from "@/components/todo/TodoContainer";
-// import Container from "@/components/ui/Container";
+import Container from "@/components/ui/Container";
 
 // const Todo = () => {
 //   return (
@@ -13,3 +13,16 @@
 // };
 
 // export default Todo;
+
+import TodoContainer from "@/components/todo/TodoContainer";
+
+const Todo = () => {
+  return (
+    <Container>
+      <h1>my todos</h1>
+      <TodoContainer />
+    </Container>
+  );
+};
+
+export default Todo;

@@ -3,6 +3,8 @@
 // import TodoCard from "./TodoCard";
 // import TodoFilter from "./TodoFilter";
 // import { useGetTodosQuery } from "@/redux/api/api";
+import { Button } from "../ui/button";
+import TodoCard from "./TodoCard";
 
 // const TodoContainer = () => {
 //   // from local state
@@ -38,3 +40,28 @@
 // };
 
 // export default TodoContainer;
+
+const TodoContainer = () => {
+  return (
+    <div>
+      <div className="flex justify-between mb-5 ">
+        <Button className="bg-primary-gradient">add todo</Button>
+        <Button className="bg-primary-gradient">filter</Button>
+      </div>
+      <div className="bg-primary-gradient w-full h-[500px] rounded-xl p-5">
+        {/* <div className="bg-white text-2xl font-bold p-5 flex justify-center items-center rounded-md">
+          <p>there is no task pending</p>
+        </div> */}
+        <div className="bg-white p-5 space-y-3  w-full h-full rounded-lg">
+          <TodoCard></TodoCard>
+          <TodoCard></TodoCard>
+          <TodoCard></TodoCard>
+          <TodoCard></TodoCard>
+          <TodoCard></TodoCard>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TodoContainer;
