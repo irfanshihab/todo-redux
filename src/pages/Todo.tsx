@@ -19,7 +19,6 @@ import TodoContainer from "@/components/todo/TodoContainer";
 const Todo = () => {
   return (
     <Container>
-      <h1>my todos</h1>
       <TodoContainer />
     </Container>
   );

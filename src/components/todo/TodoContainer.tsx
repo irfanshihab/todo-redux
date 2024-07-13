@@ -1,10 +1,12 @@
 // import { useAppSelector } from "@/redux/features/hook";
 // import AddTodoModal from "./AddTodoModal";
 // import TodoCard from "./TodoCard";
-// import TodoFilter from "./TodoFilter";
+import TodoFilter from "./TodoFilter";
 // import { useGetTodosQuery } from "@/redux/api/api";
-import { Button } from "../ui/button";
+
 import TodoCard from "./TodoCard";
+import { useAppSelector } from "@/redux/features/hook";
+import AddTodoModal from "./AddTodoModal";
 
 // const TodoContainer = () => {
 //   // from local state
@@ -42,22 +44,27 @@ import TodoCard from "./TodoCard";
 // export default TodoContainer;
 
 const TodoContainer = () => {
+  const { todos } = useAppSelector((state) => state.todos);
   return (
     <div>
       <div className="flex justify-between mb-5 ">
-        <Button className="bg-primary-gradient">add todo</Button>
-        <Button className="bg-primary-gradient">filter</Button>
+        <AddTodoModal></AddTodoModal>
+
+        <TodoFilter></TodoFilter>
       </div>
       <div className="bg-primary-gradient w-full h-[500px] rounded-xl p-5">
         {/* <div className="bg-white text-2xl font-bold p-5 flex justify-center items-center rounded-md">
           <p>there is no task pending</p>
         </div> */}
         <div className="bg-white p-5 space-y-3  w-full h-full rounded-lg">
+          {/* <TodoCard></TodoCard>
           <TodoCard></TodoCard>
           <TodoCard></TodoCard>
           <TodoCard></TodoCard>
-          <TodoCard></TodoCard>
-          <TodoCard></TodoCard>
+          <TodoCard></TodoCard> */}
+          {todos.map((item) => (
+             <TodoCard id={""} {...item}></TodoCard>
+          ))}
         </div>
       </div>
     </div>
