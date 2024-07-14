@@ -13,6 +13,9 @@ const TodoContainer = () => {
   if (isLoading) {
     return <p className="text-blue-800">Loading....</p>;
   }
+  if (isError) {
+    return <p className="text-red-800">error where something error....</p>;
+  }
   return (
     <div>
       <div className="flex justify-between mb-5">
