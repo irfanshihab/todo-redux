@@ -2,6 +2,7 @@
 import { useAppDispatch } from "@/redux/features/hook";
 import { Button } from "../ui/button";
 import { removeTodo, toggleComplete } from "@/redux/features/todoSlice";
+import { useUpdateTodoMutation } from "@/redux/api/api";
 // import { removeTodo, toggleComplete } from "@/redux/features/todoSlice";
 
 // type TTodoCardProps = {
@@ -63,7 +64,7 @@ import { removeTodo, toggleComplete } from "@/redux/features/todoSlice";
 
 // export default TodoCard;
 type TTodoCardProps = {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   isCompleted?: boolean;
@@ -72,14 +73,31 @@ type TTodoCardProps = {
 const TodoCard = ({
   title,
   description,
-  id,
+  _id,
   isCompleted,
   priority,
 }: TTodoCardProps) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  const [updateTodo, { isLaoding, isError }] = useUpdateTodoMutation();
   const toggleState = () => {
-    dispatch(toggleComplete(id));
-    console.log(dispatch(toggleComplete(id)));
+    // dispatch(toggleComplete(id));
+    // console.log(dispatch(toggleComplete(id)));
+    const taskData = {
+      title,
+      description,
+      priority,
+      isCompleted: !isCompleted,
+    };
+    const options = {
+      id: _id,
+      data: {
+        title,
+        description,
+        priority,
+        isCompleted: !isCompleted,
+      },
+    };
+    updateTodo(options);
   };
   return (
     <div>
@@ -90,6 +108,7 @@ const TodoCard = ({
           name="complete"
           id="complete"
           className="mr-3"
+          defaultChecked={isCompleted}
         />
         <p className="font-semibold flex-1">{title}</p>
         <div className="flex-1 flex items-center  gap-2">
